@@ -17,7 +17,8 @@ Router.get("/user", async (req, res) => {
           type: "Point",
           coordinates: [Number(query.location.lg), Number(query.location.la)],
         },
-        $maxDistance: Number(Number(query.range) || 100000),
+        $minDistance: 0,
+        $maxDistance: Number(query.range),
       },
     };
     delete query["range"];

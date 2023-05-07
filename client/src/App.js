@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 // constants
 import { USER_ENDPOINT } from "./constants/endpoints";
+import { CONTACT_IN_URL } from "./constants/urls";
 // mui
-import { Container, Slider, Stack, TextField, Typography, Button, Divider, Chip, Dialog, DialogTitle, DialogContent, DialogActions, Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
+import { Container, Slider, Stack, TextField, Typography, Button, Divider, Chip, Dialog, DialogTitle, DialogContent, DialogActions, Accordion, AccordionSummary, AccordionDetails, Link } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
@@ -65,6 +66,7 @@ const App = () => {
         .then((res) => {
           setIsLoading(false);
           setUser(null);
+          alert("Added Successfully!");
         })
         .catch((err) => {
           console.log(err);
@@ -106,6 +108,13 @@ const App = () => {
         <Button onClick={() => setUser({})} variant="contained" color="secondary" startIcon={<AddIcon />}>
           Add your location!
         </Button>
+        <Divider sx={{ width: "100%", my: 4 }} />
+        <Typography variant="body1" color="text.secondary" align="center" sx={{ mt: 2 }}>
+          Created by{" "}
+          <Link href={CONTACT_IN_URL} target="_blank">
+            ME
+          </Link>
+        </Typography>
         <Dialog open={Boolean(user)} onClose={() => setUser(null)}>
           <DialogTitle id="alert-dialog-title">Add your location and let others find you!</DialogTitle>
           <DialogContent>
